@@ -76,12 +76,32 @@ router.route("/get/:id").get(async (req, res) => {
 router.post("/login", async (req, res) => {
     try {
         const { regNumber } = req.body;
-        const student = await Student.findOne({ regNumber });
-        if (!student) {
-            return res.status(403).json({ message: 'Auth failed, registration number is wrong', success: false });
+
+        if (!regNumber) {
+            return res.status(400).json({ message: 'Registration number is required', success: false });
         }
-        res.status(200).json({ message: "Login Success", success: true, regNumber, name: student.firstName });
+
+        const student = await Student.findOne({ regNumber }).lean();
+        if (!student) {
+            return res.status(403).json({ message: 'Auth failed, invalid registration number', success: false });
+        }
+
+        const { firstName, deptName, year, age, gender, address, contactNumber } = student;
+
+        res.status(200).json({
+            message: "Login Success", 
+            success: true, 
+            regNumber, 
+            name: firstName,
+            deptName,
+            year,
+            age,
+            gender,
+            address,
+            contactNumber
+        });
     } catch (err) {
+        console.error(err);  // Log the actual error for debugging
         res.status(500).json({ message: "Internal server error", success: false });
     }
 });
