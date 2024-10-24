@@ -8,7 +8,7 @@ const multer = require("multer");
 require("dotenv").config();
 app.use(cors());
 app.use(bodyParser.json());
-const studentRouter = require ("./routes/teacher");
+const studentRouter = require ("./routes/student");
 app.use("/student", studentRouter);
 
 app.get('/ping', (req, res) => {

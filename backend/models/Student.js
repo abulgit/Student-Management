@@ -13,7 +13,16 @@ const studentSchema = new Schema({
     },
     regNumber: {
         type: Number,
-        required: true
+        required: true,
+        unique: true
+    },
+    deptName:{
+        type:String,
+        required:true
+    },
+    year:{
+        type:Number,
+        required:true
     },
     age: {
         type: Number,
