@@ -11,6 +11,10 @@ const studentSchema = new Schema({
         type: String,
         required: true
     },
+    rollNumber:{
+        type: Number,
+        required: true
+    },
     regNumber: {
         type: Number,
         required: true

@@ -4,7 +4,7 @@ const bodyParser = require("body-parser");
 const cors = require("cors");
 const dotenv = require("dotenv");
 const app = express();
-const multer = require("multer");
+//const multer = require("multer");
 require("dotenv").config();
 app.use(cors());
 app.use(bodyParser.json());
@@ -17,8 +17,8 @@ app.get('/ping', (req, res) => {
 
 
 /* Mongoose Setup */
-const PORT = process.env.PORT || 8070;
-const URL = process.env.MONGODB_URL;
+const PORT = process.env.PORT || 8080; 
+const URL = process.env.MONGODB_URL; 
 
 mongoose.connect(URL, {
     useCreateIndex: true,
