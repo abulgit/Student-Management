@@ -101,7 +101,7 @@ router.post("/login", async (req, res) => {
             contactNumber
         });
     } catch (err) {
-        console.error(err);  // Log the actual error for debugging
+        console.error(err); 
         res.status(500).json({ message: "Internal server error", success: false });
     }
 });
